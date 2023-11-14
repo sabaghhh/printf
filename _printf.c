@@ -8,11 +8,11 @@
  */
 void buffer_flush(char *buffer, char **buffer_ptr)
 {
-    if (*buffer_ptr - buffer >= 1024)
-    {
-        write(1, buffer, *buffer_ptr - buffer);
-        *buffer_ptr = buffer;
-    }
+if (*buffer_ptr - buffer >= 1024)
+{
+write(1, buffer, *buffer_ptr - buffer);
+*buffer_ptr = buffer;
+}
 }
 
 /**
