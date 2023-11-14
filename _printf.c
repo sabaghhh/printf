@@ -53,6 +53,8 @@ else if (*format == 'i' || *format == 'd')
 count += print_int(args, buffer, &buf_ptr);
 else if (*format == 'b')
 count += print_bin(args, buffer, &buf_ptr);
+else if (*format == 'r')
+count += int print_rev(args, *buffer, **buf_ptr);
 else if (*format == 'u' || *format == 'o' || *format == 'x' || *format == 'X')
 count += print_number(args, *format);
 else if (*format == '%')
