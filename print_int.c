@@ -2,6 +2,8 @@
 /**
  * print_int - Print an integer
  * @args: the passed argument list
+ * @buffer: buffer
+ * @buf_ptr: buffer pointer
  * Return: no of digits printed
  */
 int print_int(va_list args, char *buffer, char **buf_ptr)
