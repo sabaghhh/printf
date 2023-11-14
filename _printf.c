@@ -17,26 +17,26 @@ write(1, buffer, *buffer_ptr - buffer);
 
 
 int handle_specifier(char sp,va_list args, char* buffer, char** buf_ptr){
-    int count = 0;
-    if (sp == 'c')
-        count += print_char(args, buffer, buf_ptr);
-    else if (sp == 's')
-        count += print_string(args, buffer, buf_ptr);
-    else if (sp == 'i' || sp == 'd')
-        count += print_int(args, buffer, buf_ptr);
-    else if (sp == 'b')
-        count += print_bin(args, buffer, buf_ptr);
-    else if (sp == 'r')
-        count += print_rev(args, buffer, buf_ptr);
-    else if (sp == 'u' || sp == 'o' || sp == 'x' || sp == 'X')
-        count += print_number(args, sp);
-    else if (sp == '%')
-    {
-        _putchar('%', buffer, buf_ptr);
-        count++;
-    }
+int count = 0;
+if (sp == 'c')
+count += print_char(args, buffer, buf_ptr);
+else if (sp == 's')
+count += print_string(args, buffer, buf_ptr);
+else if (sp == 'i' || sp == 'd')
+count += print_int(args, buffer, buf_ptr);
+else if (sp == 'b')
+count += print_bin(args, buffer, buf_ptr);
+else if (sp == 'r')
+count += print_rev(args, buffer, buf_ptr);
+else if (sp == 'u' || sp == 'o' || sp == 'x' || sp == 'X')
+count += print_number(args, sp);
+else if (sp == '%')
+{
+_putchar('%', buffer, buf_ptr);
+count++;
+}
 
-    return count;
+return (count);
 }
 
 /**
@@ -69,7 +69,7 @@ else
 format++;
 if (*format == '\0')
 break;
-count+=handle_specifier(*format, args, buffer, &buf_ptr);
+count+= handle_specifier(*format, args, buffer, &buf_ptr);
 }
 format++;
 }
