@@ -1,6 +1,21 @@
 #include "main.h"
 
 /**
+ * buffer_flush - print buffer content if buffer full
+ * @buffer: buffer
+ * @buffer_ptr: pointer to keep track of buffer position
+ * No Return
+ */
+void buffer_flush(char *buffer, char **buffer_ptr)
+{
+    if (*buffer_ptr - buffer >= 1024)
+    {
+        write(1, buffer, *buffer_ptr - buffer);
+        *buffer_ptr = buffer;
+    }
+}
+
+/**
  * _printf - Custom printf function
  * @format: Format string
  * @...: Variable argument:s
@@ -12,6 +27,8 @@ int _printf(const char *format, ...)
 int count;
 va_list args;
 
+char buffer[1024], *buf_ptr = buffer;
+
 if (!format || (format[0] == '%' && !format[1]))
 return (-1);
 count = 0;
@@ -20,7 +37,7 @@ while (*format)
 {
 if (*format != '%')
 {
-write(1, format, 1);
+_putchar(*format,buffer,&buf_ptr);
 count++;
 }
 else
@@ -29,23 +46,24 @@ format++;
 if (*format == '\0')
 break;
 if (*format == 'c')
-count += print_char(args);
+count += print_char(args, buffer, &buf_ptr);
 else if (*format == 's')
-count += print_string(args);
+count += print_string(args, buffer, &buf_ptr);
 else if (*format == 'i' || *format == 'd')
-count += print_int(args);
+count += print_int(args, buffer, &buf_ptr);
 else if (*format == 'b')
-count += print_bin(args);
+count += print_bin(args, buffer, &buf_ptr);
 else if (*format == 'u' || *format == 'o' || *format == 'x' || *format == 'X')
 count += print_number(args, *format);
 else if (*format == '%')
 {
-_putchar('%');
+_putchar('%', buffer, &buf_ptr);
 count++;
 }
 }
 format++;
 }
+(buf_ptr > buffer) ? write(1, buffer, buf_ptr - buffer) : 0;
 va_end(args);
 return (count);
 }

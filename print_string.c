@@ -7,7 +7,7 @@
  */
 
 
-int print_string(va_list args)
+int print_string(va_list args, char *buffer, char **buf_ptr)
 {
 	char *str;
 	int  i;
@@ -18,7 +18,7 @@ int print_string(va_list args)
 		str = "(null)";
 	while (str[i])
 	{
-		_putchar(str[i]);
+        _putchar(str[i], buffer, buf_ptr);
 		i++;
 	}
 	return (i);

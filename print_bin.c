@@ -5,7 +5,7 @@
  * @args: va_list argument
  * Return: Number of characters printed
  */
-int print_bin(va_list args)
+int print_bin(va_list args, char *buffer, char **buf_ptr)
 {
 	unsigned int num, mask, count;
 	int z;
@@ -16,7 +16,7 @@ int print_bin(va_list args)
 
 	if (num == 0)
 	{
-		_putchar('0');
+        _putchar('0', buffer, buf_ptr);
 		return (1);
 	}
 
@@ -25,12 +25,12 @@ int print_bin(va_list args)
 		if (num & mask)
 		{
 			z = 0;
-			_putchar('1');
+            _putchar('1', buffer, buf_ptr);
 			count++;
 		}
 		else if (!z)
 		{
-			_putchar('0');
+            _putchar('0', buffer, buf_ptr);
 			count++;
 		}
 	}
