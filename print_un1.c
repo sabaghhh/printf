@@ -9,11 +9,11 @@
 
 char *unsig_hex(unsigned int num, char specifier)
 {
+int remainder;
+
 int len = _num_digits_hex(num);
 
 char *hex_str = malloc(len + 1);
-
-int remainder
 
 if (hex_str == NULL)
 	return (NULL);
