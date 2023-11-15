@@ -46,10 +46,11 @@ return (count);
  * print_number - Print an unsigned integer in the specified format
  * @args: va_list argument
  * @specifier: Conversion specifier ('u', 'o', 'x', or 'X')
- *
+ * @buffer: buffer
+ * @buf_ptr: buffer pointer
  * Return: Number of characters printed
  */
-int print_number(va_list args, char specifier)
+int print_number(va_list args, char specifier, char *buffer, char **buf_ptr)
 {
 unsigned int num;
 char *str;
@@ -66,7 +67,10 @@ str = unsig_hex(num, specifier);
 if (str == NULL)
 return (0);
 
-write(1, str, _strlen(str));
+while(*str){
+_putchar(*str, buffer, buf_ptr);
+str++;
+}
 free(str);
 
 return (_num_digits(num));

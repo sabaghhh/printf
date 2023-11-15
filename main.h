@@ -12,7 +12,7 @@ int print_int(va_list args, char *buffer, char **buf_ptr);
 int print_bin(va_list args, char *buffer, char **buf_ptr);
 int _putchar(char c, char *buffer, char **buf_ptr);
 int _printf(const char *format, ...);
-int print_number(va_list args, char specifier);
+int print_number(va_list args, char specifier, char *buffer, char **buf_ptr);
 char *unsig(unsigned int num, int base);
 char *unsig_hex(unsigned int num, char specifier);
 int _strlen(const char *str);

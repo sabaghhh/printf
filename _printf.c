@@ -29,7 +29,7 @@ count += print_bin(args, buffer, buf_ptr);
 else if (sp == 'r')
 count += print_rev(args, buffer, buf_ptr);
 else if (sp == 'u' || sp == 'o' || sp == 'x' || sp == 'X')
-count += print_number(args, sp);
+count += print_number(args, sp, buffer, buf_ptr);
 else if (sp == '%')
 {
 _putchar('%', buffer, buf_ptr);
