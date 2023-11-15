@@ -15,7 +15,15 @@ write(1, buffer, *buffer_ptr - buffer);
 }
 }
 
-
+/**
+ * handle_specifier - Handles a specific character specifier in a formatted string
+ * @sp: The specifier character to handle
+ * @args: A va_list of arguments for formatting
+ * @buffer: A pointer to a character buffer for output
+ * @buf_ptr: A pointer to a pointer to a character buffer
+ * Return: An integer representing the number of characters written to the buffer,
+ * or -1 on failure.
+ */
 int handle_specifier(char sp, va_list args, char *buffer, char **buf_ptr)
 {
 int count = 0;
