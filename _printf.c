@@ -61,7 +61,6 @@ int _printf(const char *format, ...)
 {
 int count;
 va_list args;
-
 char buffer[1024], *buf_ptr = buffer;
 
 if (!format || (format[0] == '%' && !format[1]))
